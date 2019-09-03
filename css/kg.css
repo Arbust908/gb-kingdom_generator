@@ -1,0 +1,57 @@
+body {
+    font-family: 'Open Sans', serif;
+    font-size: 16px;
+    background-color: #EEE5CE;
+    background-image: url("../img/background.jpg");
+    margin-top: 0;
+    overflow-y: scroll;
+    height: 100%
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin-top: .2em;
+    margin-bottom: .2em;
+    font-family: MrJeeves;
+    font-weight: 800;
+    color: #58180D
+}
+
+h1 {
+    column-span: all;
+    font-size: .987cm;
+    -webkit-column-span: all;
+    -moz-column-span: all
+}
+
+h1+p::first-letter {
+    float: left;
+    font-family: Solberry;
+    font-size: 10em;
+    color: #222;
+    line-height: .8em
+}
+
+h2 {
+    font-size: .705cm
+}
+
+h3 {
+    font-size: .529cm;
+    border-bottom: 2px solid #c9ad6a
+}
+
+h4 {
+    margin-top: .15cm;
+    margin-bottom: 0;
+    font-size: .458cm
+}
+
+h5 {
+    margin-bottom: .2em;
+    font-family: ScalySansSmallCaps;
+    font-size: .423cm;
+    font-weight: 900
+}

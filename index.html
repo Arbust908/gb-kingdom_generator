@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700">
+</head>
+<body>
+    
+    <h1>Kingdom History Generator</h1>
+    <!-- <h2>by Adam Edwards</h2> Simulate -->
+    <input type="text" id="yearsSimulated" value="1000" /> Years
+    <br/> 
+    <label>Noble Houses</label>
+    <textarea type="text" id="nobleHouseNames" >
+        Alphus,Betan,Gammris,Celos,Kaeivar,Nautus
+    </textarea>
+    <br/> 
+    <label>Other Kingdoms</label>
+    <textarea type="text" id="otherKingdoms" >
+        Austaria,Griggledorn,Carthal,Tortestra
+    </textarea>
+    <br/>
+    <label>Male Names</label>
+    <textarea type="text" id="maleNames">
+        Aelius,Aemilianus,Agrippa,Albinus,Appius,Aquilinus,Aulus,Aurelianus,Avitus,Balbus,Blandus,Caesar,Camillus,Cassianus,Celsus,Claudius,Cnaeus,Crispinus,Domitius,Drusus,Ennius,Fabianus,Felix,Gallus,Glaucia,Hadrianus,Horatius,Ianuarius,Iulius,Iuvenalis,Laelius,Laurentinus,Lucius,Manlius,Marcellinus,Marcius,Marianus,Marius,Martinus,Maximianus,Maximinus,Nonus,Octavius,Paulus,Plinius,Quintilianus,Quintinus,Saturninus,Secundus,Septimius,Servius,Severinus,Sextus,Terentius,Tiberius,Titianus,Valerius,Varius,Verginius,Vibianus,Aemilius,Albanus,Albus,Antoninus,Aquila,Atilius,Augustinus,Aurelius,Blasius,Caecilius,Caelinus,Caius,Cassius,Cicero,Crispus,Decimus,Domitianus,Duilius,Fabricius,Faustinus,Festus,Flavianus,Florianus,Fulvius,Gnaeus,Gratianus,Hilarius,Iovianus,Januarius,Junius,Laurentius,Livianus,Longinus,Lucilius,Marcellus,Marcus,Martialis,Maxentius,Maximus,Nerva,Otho,Pompeius,Pomponius,Porcius,Priscus,Quintillus,Quintus,Rufinus,Sabinus,Scaevola,Seneca,Septimus,Severianus,Severus,Silvanus,Tacitus,Tatianus,Tertius,Tiburtius,Titus,Tullius,Valentinianus,Vergilius,Vespasianus,Vibius,Aelianus,Aetius,Ahenobarbus,Antonius,Augustus,Avilius,Balbinus,Blandinus,Brutus,Caelius,Cassian,Cloelius,Cornelius,Cyprianus,Diocletianus,Egnatius,Fabius,Faustus,Flavius,Florus,Gaius,Germanus,Gordianus,Herminius,Hortensius,Iovita,Iulianus,Iunius,Jovian,Julius,Livius,Lucanus,Lucianus,Lucretius,Marinus,Maximilianus,Naevius,Octavianus,Ovidius,Paulinus,Petronius,Pompilius,Pontius,Publius,Regulus,Rufus,Secundinus,Sergius,Sextilius,Spurius,Tarquinius,Tatius,Thracius,Traianus,Valens,Valentinus,Valerianus,Varinius,Vinicius,Vitus
+    </textarea>
+    <br/>
+    <label>Female Names</label>
+    <textarea type="text" id="femaleNames" >
+        Aelia,Antonina,Augustina,Caecilia,Caelina,Decima,Domitia,Fabricia,Faustina,Flaviana,Floriana,Fulvia,Gratiana,Hilaria,Iulia,Julia,Junia,Liviana,Longina,Lucia,Lucilia,Paula,Pomponia,Porcia,Priscilla,Rufina,Sabina,Tacita,Tatiana,Tullia,Valentina,Valeria,Virginia,Aeliana,Aemilia,Agrippina,Aurelia,Balbina,Blandina,Cassia,Cloelia,Cornelia,Drusa,Fabia,Fabiola,Germana,Herminia,Hortensia,Iuliana,Iunia,Juliana,Laurentia,Luciana,Lucretia,Marcella,Marina,Maximiliana,Octavia,Paulina,Petronia,Valeriana,Varinia,Vita,Aemiliana,Albina,Antonia,Aquilina,Augusta,Aureliana,Caelia,Camilla,Claudia,Domitilla,Drusilla,Fabiana,Fausta,Flavia,Hadriana,Horatia,Laelia,Laurentina,Lucilla,Marcellina,Marcia,Mariana,Martina,Maxima,Prisca,Quintina,Saturnina,Septima,Severina,Titiana,Verginia,Vibiana
+    </textarea>
+    <br/> Allow Usurping:
+    <input type="checkbox" id="allowUsurping" checked="true">
+    <br/> Inline: Monuments
+    <input type="checkbox" id="inlineMonuments" checked="true"> | Wars
+    <input type="checkbox" id="inlineWars" checked="true"> | Deaths
+    <input type="checkbox" id="inlineDeaths" checked="true"> | Ascensions
+    <input type="checkbox" id="inlineAscensions" checked="true"> | Power
+    <input type="checkbox" id="inlinePower" checked="true">
+    <br/> Review Nobility Every
+    <input type="text" id="nobleReviewPeriod" value="100" /> Years
+    <br/>
+
+    <br/>
+    <button onclick="GenerateKingdom()">Generate Kingdom</button>
+
+    <p id="SummaryOutput"></p>
+
+    <p id="GeneratorOutput"></p>
+    <p></p>
+
+</body>
+<script src="Kingdom.js"></script>
+</html>
