@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Generador</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="flex flex-col mx-2 md:mx-4 lg:mx-6">
+        <h2>Generador</h2>
+        <section>
+            <article id="output"></article>
+        </section>
+        <button onclick="noblePlz()">
+            Generar!
+        </button>
+        <button onclick="makeGrok()">
+            Dame a Grok!
+        </button>
+    </main>
+</body>
+<script src="./js/masterKingdom.js"></script>
+<script>
+let pc = {};
+function noblePlz() {
+    pc = new Character({});
+}
+function makeGrok() {
+    pc = new Character({
+        gender: 'Male',
+        nobleHouse: null,
+        name: 'Grok',
+        surname: null,
+        isAlive: true,
+        parents: null,
+        children: null,
+        age: 19,
+        ageOfAcention: null,
+        prestige: 99
+    });
+}
+</script>
+</html>

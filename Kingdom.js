@@ -71,6 +71,7 @@ const warStartChance = 0.02;
 const warEndChance = 0.1;
 const monumentDestructionChance = 0.002;
 
+
 function chanceToHaveChild (female, age) {
     if (age < minParentAge) { return 0; }
 
