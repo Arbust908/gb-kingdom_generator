@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 /*
 Copyright (C) 2016  Adam Edwards
@@ -9,31 +9,34 @@ Copyright (C) 2016  Adam Edwards
  * 
  * @param {*} items 
  */
-function randomItem(items) {
+function randomItem (items) {
     return items[Math.floor(Math.random() * items.length)];
+}
+const randomBetween = (max, min = 0) => {
+    return Math.floor(Math.random() * max) + min;
 }
 
 //Universal Registers
 var kingdom = null;
-var generateOutput = "";
+var generateOutput = '';
 
 //Data
 var nobleHouseNames = []
-//var deathTypes = ["natural causes", "assassination", "old age", "poisoning", "gout", "senility", "battlefield wounds"];
+//var deathTypes = ['natural causes', 'assassination', 'old age', 'poisoning', 'gout', 'senility', 'battlefield wounds'];
 var maleNames = [];
 var femaleNames = []
-var sobriquets = ["Bold", "Pious", "Terrible", "Wise", "Clever", "Builder", "Sage", "Warlord", "Valiant", "Merciless", "Cruel", "Good", "Bad", "Bald", "Logician", "Farmer", "Mirthful", "Restless", "Pillager", "Butcher", "Dragon", "Poet", "Reformer", "Philosopher"]
+var sobriquets = ['Bold', 'Pious', 'Terrible', 'Wise', 'Clever', 'Builder', 'Sage', 'Warlord', 'Valiant', 'Merciless', 'Cruel', 'Good', 'Bad', 'Bald', 'Logician', 'Farmer', 'Mirthful', 'Restless', 'Pillager', 'Butcher', 'Dragon', 'Poet', 'Reformer', 'Philosopher']
 
-var monumentNameNouns = ["Castle", "Citadel", "Tower", "Shrine", "Fortress", "Monument", "Wall", "Statue", "Arch", "Temple", "Lighthouse", "Colossus", "Gardens", "Library", "Palace", "College", "Observatory"]
-var monumentDestructionTypes = ["fire", "storm", "earthquake", "lightning", "witchcraft", "blight", "sabotage", "uprising", "arson", "design flaw", "warfare", "crumbling", "toppling", "mysterious forces", "the Sovereign"]
+var monumentNameNouns = ['Castle', 'Citadel', 'Tower', 'Shrine', 'Fortress', 'Monument', 'Wall', 'Statue', 'Arch', 'Temple', 'Lighthouse', 'Colossus', 'Gardens', 'Library', 'Palace', 'College', 'Observatory']
+var monumentDestructionTypes = ['fire', 'storm', 'earthquake', 'lightning', 'witchcraft', 'blight', 'sabotage', 'uprising', 'arson', 'design flaw', 'warfare', 'crumbling', 'toppling', 'mysterious forces', 'the Sovereign']
 
-var otherKingdomNames = ["Austaria", "Griggledorn", "Carthal", "Tortestra"]
-var governmentTypes = ["Kingdom", "Kingdom", "Kingdom", "Kingdom", "Kingdom", "Empire", "Republic", "City", "Confederation", "Mageocracy", "Holy Order", "Horde", "Council", "Bank"]
+var otherKingdomNames = ['Austaria', 'Griggledorn', 'Carthal', 'Tortestra']
+var governmentTypes = ['Kingdom', 'Kingdom', 'Kingdom', 'Kingdom', 'Kingdom', 'Empire', 'Republic', 'City', 'Confederation', 'Mageocracy', 'Holy Order', 'Horde', 'Council', 'Bank']
 
 
 //Constants
 var yearsSimulated = 3000;
-var nobleHouseSize = 1000;
+var nobleHouseSize = 500;
 
 var initialAgeRange = 60;
 //var maxReignTime = 50; //not yet used
@@ -168,7 +171,7 @@ class Kingdom {
         }
 
         for (var i = 0; i < otherKingdomNames.length; i++) {
-            var tempKingdom = new OtherKingdom(randomItem(governmentTypes) + " of " + otherKingdomNames[i]);
+            var tempKingdom = new OtherKingdom(randomItem(governmentTypes) + ' of ' + otherKingdomNames[i]);
             this.otherKingdoms.push(tempKingdom);
             this.otherKingdomsAtPeace.push(tempKingdom);
         }
@@ -203,11 +206,11 @@ class Kingdom {
 
         if (allowUsurping && this.GreatestHouse() != this.rulingHouse) {
             if (Math.random() < yearlyUsurpAttempt)
-                this.ruler.Die("violent overthrow");
+                this.ruler.Die('violent overthrow');
         }
 
         if (Kingdom.eventLog.length > 0) {
-            write("<h4>Year " + this.year + "</h4>");
+            write('<h4>Year ' + this.year + '</h4>');
             Kingdom.eventLog.reverse();
 
             while (Kingdom.eventLog.length > 0) {
@@ -228,9 +231,9 @@ class Kingdom {
             this.EndWar(randomItem(this.warList));
 
         if (this.year % KingdomOverviewPeriod == 0) {
-            write("<h3>Year " + this.year + " Review</h3>");
+            write('<h3>Year ' + this.year + ' Review</h3>');
             this.DisplayKingdomStats();
-            write("<h3></h3>");
+            write('<h3></h3>');
         }
 
     }
@@ -291,7 +294,7 @@ class Kingdom {
         }
 
         if (allowUsurping && greatestHouse !== this.rulingHouse) {
-            Kingdom.eventLog.push(greatestHouse.FullName() + " has usurped " + this.rulingHouse.FullName() + "!");
+            Kingdom.eventLog.push(greatestHouse.FullName() + ' has usurped ' + this.rulingHouse.FullName() + '!');
             this.AnointRuler(greatestHouse.leader); // used to be MostPowerfulNoble() but that didn't make sense
         } else {
             this.AnointRuler(this.rulingHouse.leader);
@@ -303,7 +306,7 @@ class Kingdom {
 
 
         if (this.ruler != null && this.ruler.parent != null && this.ruler.parent == noble.parent)
-            Kingdom.eventLog[Kingdom.eventLog.length - 1] += (" Thus, their sibling " + noble.BasicTitle() + " succeeds them.");
+            Kingdom.eventLog[Kingdom.eventLog.length - 1] += (' Thus, their sibling ' + noble.BasicTitle() + ' succeeds them.');
 
         this.ruler = noble;
         this.rulingHouse = noble.nobleHouse;
@@ -317,31 +320,31 @@ class Kingdom {
 
 
         if (this.ruler.female)
-            this.ruler.title = "Queen";
+            this.ruler.title = 'Queen';
         else
-            this.ruler.title = "King";
+            this.ruler.title = 'King';
 
 
 
         for (var i = 0; i < this.ruler.children.length; i++) {
             var tempChild = this.ruler.children[i];
             if (tempChild.female)
-                tempChild.title = "Dutchess";
+                tempChild.title = 'Dutchess';
             else
-                tempChild.title = "Duke";
+                tempChild.title = 'Duke';
             // writeln(tempChild.BasicTitle());
         }
 
 
         this.RulerList.push(noble);
         if (inlineAscensions) {
-            Kingdom.eventLog.push("All hail " + this.ruler.FullTitle() + "!");
+            Kingdom.eventLog.push('All hail ' + this.ruler.FullTitle() + '!');
             if (this.ruler.age < minRulerAge)
-                Kingdom.eventLog.push("The young soverign is guided by Regent " + this.rulingHouse.FindRegent().FullTitle());
+                Kingdom.eventLog.push('The young soverign is guided by Regent ' + this.rulingHouse.FindRegent().FullTitle());
 
         }
 
-        this.ruler.sobriquet = "the " + randomItem(sobriquets);
+        this.ruler.sobriquet = 'the ' + randomItem(sobriquets);
 
     }
 
@@ -367,45 +370,45 @@ class Kingdom {
                 shortestReign = this.RulerList[i];
         }
 
-        write("The current ruler is " + this.ruler.TitleBuilder(true, true, true, 8));
+        write('The current ruler is ' + this.ruler.TitleBuilder(true, true, true, 8));
 
-        write("<h3>Current Wars</h3>");
+        write('<h3>Current Wars</h3>');
         if (this.warList.length == 0)
-            write("The Kingdom is currently at peace with other kingdoms.");
+            write('The Kingdom is currently at peace with other kingdoms.');
         else
             for (var i = 0; i < this.warList.length; i++) {
                 var tempWar = this.warList[i];
-                writebullet("Have been warring with the " + tempWar.opponent.name + " for " + tempWar.duration + " years.");
+                writebullet('Have been warring with the ' + tempWar.opponent.name + ' for ' + tempWar.duration + ' years.');
             }
 
-        write("<h3>Noble Houses</h3>")
+        write('<h3>Noble Houses</h3>')
         for (var i = 0; i < this.nobleHouses.length; i++) {
             writebullet(this.nobleHouses[i].DisplayStats());
         }
 
-        write("<h3>Reign Records</h3>");
-        writebullet("The shortest reign was " + shortReign + " years by " + shortestReign.FullTitle());
-        writebullet("The longest reign was " + longReign + " years by " + longestReign.FullTitle());
+        write('<h3>Reign Records</h3>');
+        writebullet('The shortest reign was ' + shortReign + ' years by ' + shortestReign.FullTitle());
+        writebullet('The longest reign was ' + longReign + ' years by ' + longestReign.FullTitle());
 
 
         if (this.monumentList.length == 0)
-            writeln("No standing monuments");
+            writeln('No standing monuments');
         else
-            write("<h3>Standing Monuments</h3>");
+            write('<h3>Standing Monuments</h3>');
 
         for (var i = 0; i < this.monumentList.length; i++) {
             var tempMonument = this.monumentList[i];
-            writebullet(tempMonument.name + " (" + tempMonument.duration + " years standing)");
+            writebullet(tempMonument.name + ' (' + tempMonument.duration + ' years standing)');
         }
 
         if (this.monumentList.length == 0)
-            writeln("No Ruins");
+            writeln('No Ruins');
         else
-            write("<h3>Ruins</h3>");
+            write('<h3>Ruins</h3>');
 
         for (var i = 0; i < this.destroyedMonumentList.length; i++) {
             var tempRuin = this.destroyedMonumentList[i];
-            writebullet(tempRuin.name + " (stood " + tempRuin.duration + " years until destroyed by " + tempRuin.resolution + ")");
+            writebullet(tempRuin.name + ' (stood ' + tempRuin.duration + ' years until destroyed by ' + tempRuin.resolution + ')');
         }
 
 
@@ -423,8 +426,10 @@ class NobleHouse {
         this.kingdom = kingdom;
         this.regent = null;
 
-        for (var i = 0; i < this.maxSize; i++) {
-            new Noble(null, null, this);
+        const maxNobles = randomBetween(this.maxSize, 1);
+        for (var i = 0; i < (maxNobles + 1); i++) {
+            const noble = new Noble(null, null, this);
+            this.livingNobles.push(noble);
         }
 
         this.leader = null;
@@ -432,9 +437,10 @@ class NobleHouse {
     }
 
     Might () {
-        const Migth = Math.round(this.livingNobles.map(noble => noble.prestige).reduce((totalPower, value) => totalPower + value) + (this.leader.prestige * Math.random()) / 100 );
-        console.log(Migth);
-        
+        const noblesPower = this.livingNobles.map(noble => noble.prestige).reduce((totalPower, value) => totalPower + value);
+        const leaderPower = (this.leader.prestige * (Math.random() * 10));
+        const sumPower = noblesPower + leaderPower;
+        const Migth = Math.round(sumPower / 100);
         return Migth;
     }
 
@@ -442,7 +448,7 @@ class NobleHouse {
         return 'House ' + this.name;
     }
 
-    AdvanceYear() {
+    AdvanceYear () {
         while (this.livingNobles.length < this.maxSize) {
             this.BreedElites();
         }
@@ -452,26 +458,28 @@ class NobleHouse {
         }
 
         if (this.leader.age < minRulerAge) {
-            if (this.regent == null || !this.regent.alive)
+            if (this.regent == null || !this.regent.alive) {
                 this.regent = this.FindRegent();
-        }
-        else
+            }
+        } else {
             this.regent = null;
+        }
 
-        this.power += Math.max(0, ((Math.random() - .5) * yearlyHouseJostling));
+        this.power += Math.max(0, ((Math.random() - 0.5) * yearlyHouseJostling));
     }
 
-    BreedElites() {
-        var nobles = this.livingNobles;
-        var eliteCount = Math.min(nobleHouseSize / 3, nobles.length);
+    BreedElites () {
+        const nobles = this.livingNobles;
+        var eliteCount = Math.min(nobleHouseSize / randomBetween(4, 2), nobles.length);
         nobles.sort(comparePrestige);
 
-        if (this.ruler != null && Math.random() / 2 < chanceToHaveChild(nobles[i].female, nobles[i].age))
-            this.ruler.HaveChild();
-
         for (var i = 0; i < eliteCount; i++) {
-            if (Math.random() < chanceToHaveChild(nobles[i].female, nobles[i].age))
+            if (this.ruler != null && Math.random() / 2 < chanceToHaveChild(nobles[i].female, nobles[i].age)) {
+                this.ruler.HaveChild();
+            }
+            if (Math.random() < chanceToHaveChild(nobles[i].female, nobles[i].age)) {
                 nobles[i].HaveChild();
+            }
         }
     }
 
@@ -480,7 +488,7 @@ class NobleHouse {
         this.deadNobles.push(noble);
 
         if (noble == this.leader) {
-            //Kingdom.eventLog.push("Time to replace " +this.leader.name + " as leader of "+this.FullName());
+            //Kingdom.eventLog.push('Time to replace ' +this.leader.name + ' as leader of '+this.FullName());
             this.PickNewLeader();
         }
 
@@ -492,11 +500,11 @@ class NobleHouse {
         this.leader.prestige += prestigeFromCount;
         //this.leader.notable = true;
 
-        if (this.leader.title == "Lord" || this.leader.title == "Lady") { //time for a promotion!
+        if (this.leader.title == 'Lord' || this.leader.title == 'Lady') { //time for a promotion!
             if (this.leader.female)
-                this.leader.title = "Countess";
+                this.leader.title = 'Countess';
             else
-                this.leader.title = "Count";
+                this.leader.title = 'Count';
         }
     }
 
@@ -523,10 +531,10 @@ class NobleHouse {
 
     DisplayStats() {
         return (this.FullName() + 
-        (inlinePower ? (", Might " + Math.round(this.Might())) : "" )  + 
-        ", is lead by " + this.leader.FullTitle() +
-        ", whose children are " + this.leader.ListChildren() + 
-        (this.regent ? (". The young ruler is guided by Regent " + this.regent.FullTitle()) : "" ));
+        (inlinePower ? (', Might ' + Math.round(this.Might())) : '' )  + 
+        ', is lead by ' + this.leader.FullTitle() +
+        ', whose children are ' + this.leader.ListChildren() + 
+        (this.regent ? ('. The young ruler is guided by Regent ' + this.regent.FullTitle()) : '' ));
     }
     FindRegent() {
         var nobles = this.livingNobles;
@@ -582,13 +590,9 @@ class Noble {
             this.age = Math.round(Math.random() * initialAgeRange);
             this.prestige = nobleHouse.power / 2 + (Math.random() * nobleHouse.power / 2);
         }
-
-        if (this.female)
-            this.title = 'Lady';
-        else
-            this.title = 'Lord';
-
-        this.nobleHouse.livingNobles.push(this);
+        this.title = (this.title !== '')
+            ? this.title
+            : (this.female) ? 'Lady' : 'Lord';
     }
 
     HaveChild () {
@@ -688,13 +692,13 @@ function write(text) {
     //document.write(text);
 }
 function writeln(text) {
-    generateOutput += text + "<br>";
+    generateOutput += text + '<br>';
     //document.write(text);
-    //document.write("<br>");
+    //document.write('<br>');
 }
 
 function writebullet(text) {
-    generateOutput += "<li>" + text + "</li>";
+    generateOutput += '<li>' + text + '</li>';
 }
 
 
@@ -708,38 +712,38 @@ var inlinePower = true;
 var KingdomOverviewPeriod = 50; //every x years show the state of the kingdom
 
 function GenerateKingdom() {
-    yearsSimulated = parseInt(document.getElementById("yearsSimulated").value, 10);
-    otherKingdomNames = document.getElementById("otherKingdoms").value.split(",");
-    nobleHouseNames = document.getElementById("nobleHouseNames").value.split(",");
-    maleNames = document.getElementById("maleNames").value.split(",");
-    femaleNames = document.getElementById("femaleNames").value.split(",");
-    allowUsurping = document.getElementById("allowUsurping").checked;
-    inlineMonuments = document.getElementById("inlineMonuments").checked;
-    inlineWars = document.getElementById("inlineWars").checked;
-    inlineDeaths = document.getElementById("inlineDeaths").checked;
-    inlineAscensions = document.getElementById("inlineAscensions").checked;
-    inlinePower = document.getElementById("inlinePower").checked;
-    KingdomOverviewPeriod = parseInt(document.getElementById("nobleReviewPeriod").value, 10);
+    yearsSimulated = parseInt(document.getElementById('yearsSimulated').value, 10);
+    otherKingdomNames = document.getElementById('otherKingdoms').value.split(',');
+    nobleHouseNames = document.getElementById('nobleHouseNames').value.split(',');
+    maleNames = document.getElementById('maleNames').value.split(',');
+    femaleNames = document.getElementById('femaleNames').value.split(',');
+    allowUsurping = document.getElementById('allowUsurping').checked;
+    inlineMonuments = document.getElementById('inlineMonuments').checked;
+    inlineWars = document.getElementById('inlineWars').checked;
+    inlineDeaths = document.getElementById('inlineDeaths').checked;
+    inlineAscensions = document.getElementById('inlineAscensions').checked;
+    inlinePower = document.getElementById('inlinePower').checked;
+    KingdomOverviewPeriod = parseInt(document.getElementById('nobleReviewPeriod').value, 10);
     console.log(chanceToHaveChild(true, 31));
     kingdom = new Kingdom();
 
 
-    write("<h2>Yearly Accounts</h2>");
+    write('<h2>Yearly Accounts</h2>');
 
     for (var i = 0; i < yearsSimulated; i++) {
         kingdom.AdvanceYear();
     }
 
     document.getElementById('GeneratorOutput').innerHTML = generateOutput;
-    generateOutput = "";
+    generateOutput = '';
 
 
-    write("<h2>Kingdom Summary</h2>");
+    write('<h2>Kingdom Summary</h2>');
 
     kingdom.InterestingFacts();
 
     document.getElementById('SummaryOutput').innerHTML = generateOutput;
-    generateOutput = "";
+    generateOutput = '';
 
 
 }
