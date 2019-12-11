@@ -56,3 +56,28 @@ function GenerateKingdom () {
     document.getElementById('SummaryOutput').innerHTML = generateOutput;
     generateOutput = '';
 }
+
+function rand (max, min = 0) {
+    return Math.floor(Math.random() * max) + min;
+}
+function generateGender () {
+    return (Math.random() < FEMALE_RATIO) ? 'Female' : 'Male';
+}
+function generateHouse () {
+    return randomItem(HOUSE_NAME);
+}
+function generateName (gender) {
+    return randomItem(gender === 'Male' ? NAMES.Male : NAMES.Female);
+}
+function generateSurname (afiliation) {
+    return Math.random() < 0.7
+        ? afiliation.name
+        : randomItem(SURNAME);
+}
+function debugler (...params) {
+    if (DEBUGING) {
+        params.forEach((param) => {
+            console.log(param);
+        });
+    }
+}
