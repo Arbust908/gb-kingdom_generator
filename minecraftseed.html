@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MC SEED</title>
+</head>
+<body>
+    <h1 id='code'></h1>
+    <button onclick="generateSeed()">Generar</button>
+</body>
+<script>
+    let thing = document.getElementById('code');
+    const rand = (max, min = 0) => {
+        return Math.floor(Math.random() * max) + min;
+    };
+    const generateSeed = () => {
+        let maxNum = rand(12, 8);
+        let codice = '';
+        codice = Math.random > 0.5 ? '-' : '';
+        for (let i = 0; i < maxNum; i++) {
+            codice += rand(9);
+        }
+        thing.innerHTML = codice;
+    };
+    document.onload = generateSeed();
+</script>
+</html>

@@ -11,9 +11,10 @@ class Noble {
 
         this.parent = parent; // El objeto Noble padre
         this.children = []; // Array de Hijos
+        this.partner = null; // Si tiene pareja
 
         this.age = null; // Edad
-        this.ageAtAscention = 0; //
+        this.ageAtAscention = 0; // Aque edad Se volvio Lider. Si es 0 no es lider
         this.prestige = null; // numero de Prestigio
 
         this.hadChildThisYear = false; // si tuvo hijos
@@ -37,7 +38,7 @@ class Noble {
                 }
             }
         } else {
-            this.age = Math.round(Math.random() * initialAgeRange); // Funcion que da una fecha inicial
+            this.age = Math.round(Math.random() * initialAgeRange); // Funcion que da una edad inicial
             this.prestige = nobleHouse.power / 2 + (Math.random() * nobleHouse.power / 2); // Funcion prestigio inicial
         }
 
