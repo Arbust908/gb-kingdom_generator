@@ -8,44 +8,54 @@
     <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7dc8e45a22.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Kingdom History Generator</h1>
-    <input type="text" id="yearsSimulated" value="100" /> Years
-    <br/> 
-    <label>Noble Houses</label>
-    <textarea type="text" id="nobleHouseNames" >
-        Alphus,Betan,Gammris,Celos,Kaeivar,Nautus
-    </textarea>
-    <br/> 
-    <label>Other Kingdoms</label>
-    <textarea type="text" id="otherKingdoms" >
-        Austaria,Griggledorn,Carthal,Tortestra
-    </textarea>
-    <br/>
-    <label>Male Names</label>
-    <textarea type="text" id="maleNames">
-        Aelius,Aemilianus,Agrippa,Albinus,Appius,Aquilinus,Aulus,Aurelianus,Avitus,Balbus,Blandus,Caesar,Camillus,Cassianus,Celsus,Claudius,Cnaeus,Crispinus,Domitius,Drusus,Ennius,Fabianus,Felix,Gallus,Glaucia,Hadrianus,Horatius,Ianuarius,Iulius,Iuvenalis,Laelius,Laurentinus,Lucius,Manlius,Marcellinus,Marcius,Marianus,Marius,Martinus,Maximianus,Maximinus,Nonus,Octavius,Paulus,Plinius,Quintilianus,Quintinus,Saturninus,Secundus,Septimius,Servius,Severinus,Sextus,Terentius,Tiberius,Titianus,Valerius,Varius,Verginius,Vibianus,Aemilius,Albanus,Albus,Antoninus,Aquila,Atilius,Augustinus,Aurelius,Blasius,Caecilius,Caelinus,Caius,Cassius,Cicero,Crispus,Decimus,Domitianus,Duilius,Fabricius,Faustinus,Festus,Flavianus,Florianus,Fulvius,Gnaeus,Gratianus,Hilarius,Iovianus,Januarius,Junius,Laurentius,Livianus,Longinus,Lucilius,Marcellus,Marcus,Martialis,Maxentius,Maximus,Nerva,Otho,Pompeius,Pomponius,Porcius,Priscus,Quintillus,Quintus,Rufinus,Sabinus,Scaevola,Seneca,Septimus,Severianus,Severus,Silvanus,Tacitus,Tatianus,Tertius,Tiburtius,Titus,Tullius,Valentinianus,Vergilius,Vespasianus,Vibius,Aelianus,Aetius,Ahenobarbus,Antonius,Augustus,Avilius,Balbinus,Blandinus,Brutus,Caelius,Cassian,Cloelius,Cornelius,Cyprianus,Diocletianus,Egnatius,Fabius,Faustus,Flavius,Florus,Gaius,Germanus,Gordianus,Herminius,Hortensius,Iovita,Iulianus,Iunius,Jovian,Julius,Livius,Lucanus,Lucianus,Lucretius,Marinus,Maximilianus,Naevius,Octavianus,Ovidius,Paulinus,Petronius,Pompilius,Pontius,Publius,Regulus,Rufus,Secundinus,Sergius,Sextilius,Spurius,Tarquinius,Tatius,Thracius,Traianus,Valens,Valentinus,Valerianus,Varinius,Vinicius,Vitus
-    </textarea>
-    <br/>
-    <label>Female Names</label>
-    <textarea type="text" id="femaleNames" >
-        Aelia,Antonina,Augustina,Caecilia,Caelina,Decima,Domitia,Fabricia,Faustina,Flaviana,Floriana,Fulvia,Gratiana,Hilaria,Iulia,Julia,Junia,Liviana,Longina,Lucia,Lucilia,Paula,Pomponia,Porcia,Priscilla,Rufina,Sabina,Tacita,Tatiana,Tullia,Valentina,Valeria,Virginia,Aeliana,Aemilia,Agrippina,Aurelia,Balbina,Blandina,Cassia,Cloelia,Cornelia,Drusa,Fabia,Fabiola,Germana,Herminia,Hortensia,Iuliana,Iunia,Juliana,Laurentia,Luciana,Lucretia,Marcella,Marina,Maximiliana,Octavia,Paulina,Petronia,Valeriana,Varinia,Vita,Aemiliana,Albina,Antonia,Aquilina,Augusta,Aureliana,Caelia,Camilla,Claudia,Domitilla,Drusilla,Fabiana,Fausta,Flavia,Hadriana,Horatia,Laelia,Laurentina,Lucilla,Marcellina,Marcia,Mariana,Martina,Maxima,Prisca,Quintina,Saturnina,Septima,Severina,Titiana,Verginia,Vibiana
-    </textarea>
-    <br/> Allow Usurping:
-    <input type="checkbox" id="allowUsurping" checked="true">
-    <br/> Inline: Monuments
-    <input type="checkbox" id="inlineMonuments" checked="true"> | Wars
-    <input type="checkbox" id="inlineWars" checked="true"> | Deaths
-    <input type="checkbox" id="inlineDeaths" checked="true"> | Ascensions
-    <input type="checkbox" id="inlineAscensions" checked="true"> | Power
-    <input type="checkbox" id="inlinePower" checked="true">
-    <br/> Review Nobility Every
-    <input type="text" id="nobleReviewPeriod" value="100" /> Years
-    <br/>
-
-    <br/>
-    <button onclick="GenerateKingdom()">Generate Kingdom</button>
+    <header class="flex flex-col w-full justify-center items-center shadow mb-2">
+        <article class="fa-stack fa-2x">
+            <i class="fad fa-cookie fa-stack-1x fa-flip-horizontal" style="--fa-primary-color: #B7791F; --fa-secondary-color: #B7791F; --fa-secondary-opacity: 1.0;"></i>
+            <i class="fad fa-cookie fa-stack-1x" style="--fa-primary-color: #B7791F; --fa-secondary-color: #B7791F; --fa-secondary-opacity: 1.0;"></i>
+            <i class="fad fa-users-crown fa-stack-1x" style="--fa-primary-color: #744210; --fa-secondary-color: #D69E2E; --fa-secondary-opacity: 1.0;"></i>
+        </article>
+        <h1 class="font-lato px-2 pb-2 -mt-4">Kingdom History Generator</h1>
+    </header>
+    <main class="font-body text-sm">
+        <input type="text" id="yearsSimulated" value="100" /> Years
+        <br/> 
+        <label>Noble Houses</label>
+        <textarea type="text" id="nobleHouseNames" >
+            Alphus,Betan,Gammris,Celos,Kaeivar,Nautus
+        </textarea>
+        <br/> 
+        <label>Other Kingdoms</label>
+        <textarea type="text" id="otherKingdoms" >
+            Austaria,Griggledorn,Carthal,Tortestra
+        </textarea>
+        <br/>
+        <label>Male Names</label>
+        <textarea type="text" id="maleNames">
+            Aelius,Aemilianus,Agrippa,Albinus,Appius,Aquilinus,Aulus,Aurelianus,Avitus,Balbus,Blandus,Caesar,Camillus,Cassianus,Celsus,Claudius,Cnaeus,Crispinus,Domitius,Drusus,Ennius,Fabianus,Felix,Gallus,Glaucia,Hadrianus,Horatius,Ianuarius,Iulius,Iuvenalis,Laelius,Laurentinus,Lucius,Manlius,Marcellinus,Marcius,Marianus,Marius,Martinus,Maximianus,Maximinus,Nonus,Octavius,Paulus,Plinius,Quintilianus,Quintinus,Saturninus,Secundus,Septimius,Servius,Severinus,Sextus,Terentius,Tiberius,Titianus,Valerius,Varius,Verginius,Vibianus,Aemilius,Albanus,Albus,Antoninus,Aquila,Atilius,Augustinus,Aurelius,Blasius,Caecilius,Caelinus,Caius,Cassius,Cicero,Crispus,Decimus,Domitianus,Duilius,Fabricius,Faustinus,Festus,Flavianus,Florianus,Fulvius,Gnaeus,Gratianus,Hilarius,Iovianus,Januarius,Junius,Laurentius,Livianus,Longinus,Lucilius,Marcellus,Marcus,Martialis,Maxentius,Maximus,Nerva,Otho,Pompeius,Pomponius,Porcius,Priscus,Quintillus,Quintus,Rufinus,Sabinus,Scaevola,Seneca,Septimus,Severianus,Severus,Silvanus,Tacitus,Tatianus,Tertius,Tiburtius,Titus,Tullius,Valentinianus,Vergilius,Vespasianus,Vibius,Aelianus,Aetius,Ahenobarbus,Antonius,Augustus,Avilius,Balbinus,Blandinus,Brutus,Caelius,Cassian,Cloelius,Cornelius,Cyprianus,Diocletianus,Egnatius,Fabius,Faustus,Flavius,Florus,Gaius,Germanus,Gordianus,Herminius,Hortensius,Iovita,Iulianus,Iunius,Jovian,Julius,Livius,Lucanus,Lucianus,Lucretius,Marinus,Maximilianus,Naevius,Octavianus,Ovidius,Paulinus,Petronius,Pompilius,Pontius,Publius,Regulus,Rufus,Secundinus,Sergius,Sextilius,Spurius,Tarquinius,Tatius,Thracius,Traianus,Valens,Valentinus,Valerianus,Varinius,Vinicius,Vitus
+        </textarea>
+        <br/>
+        <label>Female Names</label>
+        <textarea type="text" id="femaleNames" >
+            Aelia,Antonina,Augustina,Caecilia,Caelina,Decima,Domitia,Fabricia,Faustina,Flaviana,Floriana,Fulvia,Gratiana,Hilaria,Iulia,Julia,Junia,Liviana,Longina,Lucia,Lucilia,Paula,Pomponia,Porcia,Priscilla,Rufina,Sabina,Tacita,Tatiana,Tullia,Valentina,Valeria,Virginia,Aeliana,Aemilia,Agrippina,Aurelia,Balbina,Blandina,Cassia,Cloelia,Cornelia,Drusa,Fabia,Fabiola,Germana,Herminia,Hortensia,Iuliana,Iunia,Juliana,Laurentia,Luciana,Lucretia,Marcella,Marina,Maximiliana,Octavia,Paulina,Petronia,Valeriana,Varinia,Vita,Aemiliana,Albina,Antonia,Aquilina,Augusta,Aureliana,Caelia,Camilla,Claudia,Domitilla,Drusilla,Fabiana,Fausta,Flavia,Hadriana,Horatia,Laelia,Laurentina,Lucilla,Marcellina,Marcia,Mariana,Martina,Maxima,Prisca,Quintina,Saturnina,Septima,Severina,Titiana,Verginia,Vibiana
+        </textarea>
+        <br/> Allow Usurping:
+        <input type="checkbox" id="allowUsurping" checked="true">
+        <br/> Inline: Monuments
+        <input type="checkbox" id="inlineMonuments" checked="true"> | Wars
+        <input type="checkbox" id="inlineWars" checked="true"> | Deaths
+        <input type="checkbox" id="inlineDeaths" checked="true"> | Ascensions
+        <input type="checkbox" id="inlineAscensions" checked="true"> | Power
+        <input type="checkbox" id="inlinePower" checked="true">
+        <br/> Review Nobility Every
+        <input type="text" id="nobleReviewPeriod" value="100" /> Years
+        <br/>
+    
+        <br/>
+        <button onclick="GenerateKingdom()">Generate Kingdom</button>
+    </main>
 
     <section id="output">
 
