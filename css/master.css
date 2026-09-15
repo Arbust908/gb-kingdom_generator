@@ -1,5 +1,34 @@
-@tailwind base;
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:opsz,wght@6..96,400..900&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Grenze+Gotisch:wght@100..900&display=swap");
+@import "tailwindcss";
 
-@tailwind components;
+@theme static {
+    --font-serif: "Bodoni Moda SC", serif;
+    --font-sans: "Grenze Gotisch", sans-serif;
+    --font-mono: "Google Sans Code", monospace;
+    --font-mono--font-feature-settings: "liga" 1, "calt" 1;
+    --default-mono-font-feature-settings: "liga" 1, "calt" 1;
+}
 
-@tailwind utilities;
+@theme {
+    --color-transparente: transparent;
+    --color-negro: #202834;
+    --color-blanco: #fff;
+    --color-gris-claro: #f7f7f7;
+    --color-gris: #5d5c61;
+    --color-rojo: #e74c3c;
+    --color-rojo-transparente: rgba(6, 74, 91, 0.3);
+    --color-azul-claro: #b2bec3;
+    --color-azul: #848e9c;
+    --color-azul-oscuro: #252f38;
+    --color-dorado-claro: #bdb76b;
+    --color-dorado: #ae9317;
+    --color-amarillo: #eeba00;
+    --color-verde: #44bd32;
+    --color-verde-transparente: rgba(112, 74, 74, 0.3);
+    --color-violeta: #a065e8;
+    --color-rosa: #f700ff;
+    --color-pollito: #fede5b;
+
+    --font-body: Gotham, sans-serif;
+    --font-main: Lato, serif;
+}
