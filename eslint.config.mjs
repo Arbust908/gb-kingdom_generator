@@ -31,5 +31,21 @@ export default [
             }],
             'no-useless-escape': 'off'
         }
+    },
+    {
+        files: ['js/**/*.mjs'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+            globals: { ...globals.browser, ...globals.worker }
+        }
+    },
+    {
+        files: ['tests/**/*.mjs'],
+        languageOptions: {
+            ecmaVersion: 2022,
+            sourceType: 'module',
+            globals: globals.node
+        }
     }
 ];

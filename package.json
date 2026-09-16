@@ -4,8 +4,10 @@
   "description": "",
   "main": "Kingdom.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test tests/*.test.mjs",
+    "start": "python3 -m http.server 8000",
     "lint": "eslint .",
+    "lint:generator": "eslint js/simulation/*.mjs js/generation.worker.mjs js/app.mjs js/family.mjs js/icons.mjs tests/*.mjs",
     "tailwind": "tailwindcss -i css/master.css -o css/main.css"
   },
   "keywords": [],

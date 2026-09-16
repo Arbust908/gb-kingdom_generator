@@ -3,57 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700">
-    <link rel="stylesheet" href="./css/kg.css">
-    <script src="./Helpers/navigation.js" defer></script>
+    <meta name="description" content="Generate a living fantasy kingdom: noble houses, remarkable characters, and centuries of connected history.">
+    <title>Kingdom History Generator</title>
+    <link rel="stylesheet" href="./css/generator.css">
+    <script type="module" src="./js/app.mjs"></script>
 </head>
 <body>
-    
-    <h1>Kingdom History Generator</h1>
-    <!-- <h2>by Adam Edwards</h2> Simulate -->
-    <input type="text" id="yearsSimulated" value="1000" /> Years
-    <br/> 
-    <label>Noble Houses</label>
-    <textarea type="text" id="nobleHouseNames" >
-        Alphus,Betan,Gammris,Celos,Kaeivar,Nautus
-    </textarea>
-    <br/> 
-    <label>Other Kingdoms</label>
-    <textarea type="text" id="otherKingdoms" >
-        Austaria,Griggledorn,Carthal,Tortestra
-    </textarea>
-    <br/>
-    <label>Male Names</label>
-    <textarea type="text" id="maleNames">
-        Aelius,Aemilianus,Agrippa,Albinus,Appius,Aquilinus,Aulus,Aurelianus,Avitus,Balbus,Blandus,Caesar,Camillus,Cassianus,Celsus,Claudius,Cnaeus,Crispinus,Domitius,Drusus,Ennius,Fabianus,Felix,Gallus,Glaucia,Hadrianus,Horatius,Ianuarius,Iulius,Iuvenalis,Laelius,Laurentinus,Lucius,Manlius,Marcellinus,Marcius,Marianus,Marius,Martinus,Maximianus,Maximinus,Nonus,Octavius,Paulus,Plinius,Quintilianus,Quintinus,Saturninus,Secundus,Septimius,Servius,Severinus,Sextus,Terentius,Tiberius,Titianus,Valerius,Varius,Verginius,Vibianus,Aemilius,Albanus,Albus,Antoninus,Aquila,Atilius,Augustinus,Aurelius,Blasius,Caecilius,Caelinus,Caius,Cassius,Cicero,Crispus,Decimus,Domitianus,Duilius,Fabricius,Faustinus,Festus,Flavianus,Florianus,Fulvius,Gnaeus,Gratianus,Hilarius,Iovianus,Januarius,Junius,Laurentius,Livianus,Longinus,Lucilius,Marcellus,Marcus,Martialis,Maxentius,Maximus,Nerva,Otho,Pompeius,Pomponius,Porcius,Priscus,Quintillus,Quintus,Rufinus,Sabinus,Scaevola,Seneca,Septimus,Severianus,Severus,Silvanus,Tacitus,Tatianus,Tertius,Tiburtius,Titus,Tullius,Valentinianus,Vergilius,Vespasianus,Vibius,Aelianus,Aetius,Ahenobarbus,Antonius,Augustus,Avilius,Balbinus,Blandinus,Brutus,Caelius,Cassian,Cloelius,Cornelius,Cyprianus,Diocletianus,Egnatius,Fabius,Faustus,Flavius,Florus,Gaius,Germanus,Gordianus,Herminius,Hortensius,Iovita,Iulianus,Iunius,Jovian,Julius,Livius,Lucanus,Lucianus,Lucretius,Marinus,Maximilianus,Naevius,Octavianus,Ovidius,Paulinus,Petronius,Pompilius,Pontius,Publius,Regulus,Rufus,Secundinus,Sergius,Sextilius,Spurius,Tarquinius,Tatius,Thracius,Traianus,Valens,Valentinus,Valerianus,Varinius,Vinicius,Vitus
-    </textarea>
-    <br/>
-    <label>Female Names</label>
-    <textarea type="text" id="femaleNames" >
-        Aelia,Antonina,Augustina,Caecilia,Caelina,Decima,Domitia,Fabricia,Faustina,Flaviana,Floriana,Fulvia,Gratiana,Hilaria,Iulia,Julia,Junia,Liviana,Longina,Lucia,Lucilia,Paula,Pomponia,Porcia,Priscilla,Rufina,Sabina,Tacita,Tatiana,Tullia,Valentina,Valeria,Virginia,Aeliana,Aemilia,Agrippina,Aurelia,Balbina,Blandina,Cassia,Cloelia,Cornelia,Drusa,Fabia,Fabiola,Germana,Herminia,Hortensia,Iuliana,Iunia,Juliana,Laurentia,Luciana,Lucretia,Marcella,Marina,Maximiliana,Octavia,Paulina,Petronia,Valeriana,Varinia,Vita,Aemiliana,Albina,Antonia,Aquilina,Augusta,Aureliana,Caelia,Camilla,Claudia,Domitilla,Drusilla,Fabiana,Fausta,Flavia,Hadriana,Horatia,Laelia,Laurentina,Lucilla,Marcellina,Marcia,Mariana,Martina,Maxima,Prisca,Quintina,Saturnina,Septima,Severina,Titiana,Verginia,Vibiana
-    </textarea>
-    <br/> Allow Usurping:
-    <input type="checkbox" id="allowUsurping" checked="true">
-    <br/> Inline: Monuments
-    <input type="checkbox" id="inlineMonuments" checked="true"> | Wars
-    <input type="checkbox" id="inlineWars" checked="true"> | Deaths
-    <input type="checkbox" id="inlineDeaths" checked="true"> | Ascensions
-    <input type="checkbox" id="inlineAscensions" checked="true"> | Power
-    <input type="checkbox" id="inlinePower" checked="true">
-    <br/> Review Nobility Every
-    <input type="text" id="nobleReviewPeriod" value="100" /> Years
-    <br/>
+    <a class="skip-link" href="#generator">Skip to generator</a>
+    <header class="site-header">
+        <a href="./index.html" class="site-name" data-icon="castle-turret">Kingdom History Generator</a>
+        <details class="legacy-nav">
+            <summary>Other generators</summary>
+            <nav aria-label="Other project pages">
+                <a href="./newKingdom.html">Legacy kingdom generator</a>
+                <a href="./kingdomTest.html">Character experiment</a>
+                <a href="./test.html">Name generator</a>
+                <a href="./minecraftseed.html">Minecraft seed</a>
+            </nav>
+        </details>
+    </header>
 
-    <br/>
-    <button onclick="GenerateKingdom()">Generate Kingdom</button>
+    <main id="generator">
+        <section class="introduction" aria-labelledby="page-title">
+            <h1 id="page-title">A kingdom is more<br>than its crown.</h1>
+            <p>Follow its people through births, rivalries, triumphs, and succession. Choose a span of years and let a history unfold.</p>
+        </section>
 
-    <p id="SummaryOutput"></p>
+        <form id="generation-form">
+            <fieldset id="configuration">
+                <legend class="sr-only">Generation settings</legend>
+                <div class="generate-bar">
+                    <label for="years">Years to simulate
+                        <input id="years" name="years" type="number" min="1" max="10000" step="1" value="100" required aria-describedby="years-hint">
+                    </label>
+                    <div class="generate-action">
+                        <button type="submit" id="generate" class="primary" data-icon="dice-five">Generate kingdom</button>
+                        <span id="years-hint" class="hint">1–10,000 years. Everything else is optional.</span>
+                    </div>
+                </div>
 
-    <p id="GeneratorOutput"></p>
-    <p></p>
+                <details id="settings" class="settings">
+                    <summary data-icon="sliders-horizontal">Shape the starting world <span>Optional settings</span></summary>
+                    <p class="hint">Leave fields blank to generate them. Supplied name lists replace the default pool; separate names with commas or new lines.</p>
+                    <div class="settings-grid">
+                        <fieldset>
+                            <legend data-icon="castle-turret">The kingdom</legend>
+                            <label for="kingdom-name">Kingdom name</label>
+                            <input id="kingdom-name" name="kingdomName" maxlength="80" placeholder="Random kingdom name">
+                            <label for="seed">Random seed</label>
+                            <input id="seed" name="seed" maxlength="120" placeholder="A new seed each run" aria-describedby="seed-hint">
+                            <p class="hint" id="seed-hint">The same seed and settings recreate the same history.</p>
+                            <label for="house-names">Noble houses <span class="hint">up to 12</span></label>
+                            <textarea id="house-names" name="houseNames" rows="2" placeholder="Alphus, Nighthall, Sanport"></textarea>
+                            <label for="neighbor-names">Neighboring kingdoms <span class="hint">up to 12</span></label>
+                            <textarea id="neighbor-names" name="neighborNames" rows="2" placeholder="Austaria, Carthal, Tortestra"></textarea>
+                            <label for="character-names">Character name pool <span class="hint">up to 200</span></label>
+                            <textarea id="character-names" name="characterNames" rows="2" placeholder="Leave blank for ancestry-specific names"></textarea>
+                            <label class="check"><input type="checkbox" name="allowUsurping" checked> Allow rival houses to usurp the throne</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend data-icon="crown">The first monarch</legend>
+                            <p class="hint">Specify as much or as little as you know. Missing details will be generated.</p>
+                            <label for="monarch-name">Name</label>
+                            <input id="monarch-name" name="monarchName" maxlength="80" placeholder="Random name">
+                            <div class="field-pair">
+                                <div><label for="monarch-title">Title</label><input id="monarch-title" name="monarchTitle" maxlength="80" placeholder="Sovereign"></div>
+                                <div><label for="monarch-house">House</label><input id="monarch-house" name="monarchHouse" maxlength="80" placeholder="One of the noble houses"></div>
+                            </div>
+                            <div class="field-pair">
+                                <div><label for="monarch-ancestry">Ancestry</label><select id="monarch-ancestry" name="monarchAncestry"><option value="">Random</option></select></div>
+                                <div><label for="monarch-age">Age in years</label><input id="monarch-age" name="monarchAge" type="number" min="0" max="1000" step="1" placeholder="Random adult"></div>
+                            </div>
+                            <div class="field-pair">
+                                <div><label for="monarch-profession">Class / profession</label><select id="monarch-profession" name="monarchProfession"><option value="">Random</option></select></div>
+                                <div><label for="monarch-level">Level</label><input id="monarch-level" name="monarchLevel" type="number" min="1" max="20" step="1" placeholder="Random, 1–4"></div>
+                            </div>
+                            <fieldset class="attribute-fields"><legend>Attributes <span class="hint">3–20, or leave blank to roll</span></legend><div id="attribute-inputs" class="attribute-grid"></div></fieldset>
+                        </fieldset>
+                        <fieldset>
+                            <legend data-icon="users">Ancestry mix</legend>
+                            <p class="hint">Relative weights, not percentages. Set a weight to zero to exclude it from random generation. A specified monarch can be an exception.</p>
+                            <div id="ancestry-inputs"></div>
+                            <p class="hint">Children inherit one parent’s ancestry. Ages and life stages use D&D-inspired rules, not a specific edition.</p>
+                        </fieldset>
+                    </div>
+                    <button type="reset" class="quiet" data-icon="arrow-counter-clockwise">Reset to random defaults</button>
+                </details>
+            </fieldset>
+        </form>
+        <noscript><p class="error">JavaScript is needed to run the kingdom simulation. Enable it, then reload this page.</p></noscript>
+        <p id="error" class="error" role="alert" hidden></p>
 
+        <section class="chronicle-section" aria-labelledby="chronicle-title">
+            <div class="section-heading">
+                <div><h2 id="chronicle-title" data-icon="scroll">The chronicle</h2><p id="run-status" role="status">Your history begins with a single ruler.</p></div>
+                <button id="cancel" class="quiet" type="button" data-icon="x" hidden>Cancel generation</button>
+            </div>
+            <div id="progress-region" hidden>
+                <div class="progress-label"><span id="progress-label">Preparing the kingdom…</span><span id="progress-percent">0%</span></div>
+                <progress id="progress" value="0" max="100" aria-labelledby="progress-label"></progress>
+            </div>
+            <div id="history-empty" class="empty-state">
+                <h3>No history has been written yet.</h3>
+                <p>Generate a kingdom to meet its first monarch. Events appear here as the years advance, followed by a portrait of the world you created.</p>
+            </div>
+            <div id="history-content" hidden>
+                <div class="history-toolbar">
+                    <span id="event-count">0 events</span>
+                    <label class="check"><input id="follow" type="checkbox" checked> Follow new events</label>
+                </div>
+                <div id="timeline-scroll" class="timeline-scroll" tabindex="0" role="region" aria-label="Kingdom events">
+                    <ol id="timeline" class="timeline"></ol>
+                </div>
+                <div class="history-paging">
+                    <button id="newer" class="quiet" type="button" data-icon="caret-left">Newer events</button>
+                    <span id="event-range"></span>
+                    <button id="older" class="quiet" type="button" data-icon="caret-right" data-icon-position="end">Older events</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="result" class="result" aria-labelledby="result-title" hidden>
+            <div class="section-heading">
+                <div><h2 id="result-title" data-icon="castle-turret">The kingdom today</h2><p id="result-subtitle"></p></div>
+                <button id="download" class="quiet" type="button" data-icon="download-simple">Download full history</button>
+            </div>
+            <div id="summary-content"></div>
+            <details class="run-settings"><summary data-icon="sliders-horizontal">Seed &amp; resolved settings</summary><p class="hint">Use these settings with the same engine version to recreate this history.</p><p id="seed-display"></p><button id="reuse" type="button" class="quiet" data-icon="arrow-counter-clockwise">Use these settings for the next run</button><pre id="resolved-settings"></pre></details>
+        </section>
+    </main>
+    <footer><p>A D&D-inspired worldbuilding tool. Characters roll the dice; history keeps the consequences.</p></footer>
 </body>
-<script src="Kingdom.js"></script>
 </html>
